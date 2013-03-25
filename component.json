@@ -1,0 +1,19 @@
+{
+  "name": "base64",
+  "repo": "virtru-components/base64",
+  "description": "A base64 library that uses builtins where possible",
+  "version": "0.0.1",
+  "dependencies": {
+    "virtru-components/utf8": "*"
+  },
+  "development": {
+    "virtru-components/chai": "*"
+  },
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ],
+  "testScripts": [
+    "test.js"
+  ]
+}
