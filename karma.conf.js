@@ -2,9 +2,6 @@
 // Generated on Mon Oct 29 2012 11:25:50 GMT-0400 (EDT)
 var fs = require('fs');
 
-console.log("WHAT UP DUDE");
-
-
 // base path, that will be used to resolve files and exclude
 basePath = './';
 
