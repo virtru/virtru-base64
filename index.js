@@ -31,7 +31,6 @@ if(!encodeMethod) {
   encodeMethod = encodeFallback;
 }
 
-
 function encode(s) {
   return encodeMethod(s);
 }
@@ -65,7 +64,16 @@ if(!decodeMethod) {
 }
 
 function decode(s) {
-  return decodeMethod(s);
+  try {
+    return decodeMethod(s);
+  } catch (err) {
+    // When unicode isn't endoed correctly sometimes atob can fail, if this is the
+    // case try decoding in JS as a failsafe measure
+    if (err.name === 'InvalidCharacterError' && err.message.indexOf('atob') > 0) {
+      return decodeFallback(s);
+    }
+    throw err;
+  }
 }
 
 exports.encode = encode; 
