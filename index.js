@@ -62,7 +62,7 @@ function decodeFallback(input) {
 // [https://gist.github.com/1020396] by [https://github.com/atk]
 var decodeMethod = undefined;
 if (typeof window != 'undefined') {
-  decodeMethod = window.btoa;
+  decodeMethod = window.atob;
 }
 
 if(!decodeMethod) {
