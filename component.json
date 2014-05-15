@@ -2,7 +2,7 @@
   "name": "base64",
   "repo": "virtru-components/base64",
   "description": "A base64 library that uses builtins where possible",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "dependencies": {
     "virtru-components/utf8": "*"
   },

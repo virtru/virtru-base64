@@ -25,7 +25,10 @@ function encodeFallback(input) {
   return output;
 }
 
-var encodeMethod = window.btoa;
+var encodeMethod = undefined;
+if (typeof window != 'undefined') {
+  encodeMethod = window.btoa;
+}
 
 if(!encodeMethod) {
   encodeMethod = encodeFallback;
@@ -36,7 +39,7 @@ function encode(s) {
 }
 
 function decodeFallback(input) {
-  input = input.replace(/=+$/, '')
+  input = input.replace(/=+$/, '');
   if (input.length % 4 == 1) throw INVALID_CHARACTER_ERR;
   for (
     // initialize result and counters
@@ -57,7 +60,10 @@ function decodeFallback(input) {
 
 // decoder
 // [https://gist.github.com/1020396] by [https://github.com/atk]
-var decodeMethod = window.atob;
+var decodeMethod = undefined;
+if (typeof window != 'undefined') {
+  decodeMethod = window.btoa;
+}
 
 if(!decodeMethod) {
   decodeMethod = decodeFallback;
