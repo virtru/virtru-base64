@@ -19,4 +19,16 @@ describe('Base64', function() {
       assert.equal(base64.decode(FOO_AS_B64), FOO);
     });
   });
-})
+
+  describe('Fail cases', function() {
+    it('fails on invalid input', function() {
+      try {
+        base64.decode('a');
+      } catch(err) {
+        assert.equal(err.name, 'InvalidCharacterError');
+        return;
+      }
+      assert(false, 'Should not get here');
+    });
+  });
+});
