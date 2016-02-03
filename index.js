@@ -8,7 +8,11 @@ InvalidCharacterError.prototype.name = 'InvalidCharacterError';
 
 // encoder
 // [https://gist.github.com/999166] by [https://github.com/nignag]
-function encodeFallback(input) {
+function encode(input) {
+  if (typeof window != 'undefined') {
+    return window.btoa(input);
+  }
+
   for (
     // initialize result and counter
     var block, charCode, idx = 0, map = chars, output = '';
@@ -24,19 +28,6 @@ function encodeFallback(input) {
     block = block << 8 | charCode;
   }
   return output;
-}
-
-var encodeMethod = undefined;
-if (typeof window != 'undefined') {
-  encodeMethod = window.btoa;
-}
-
-if(!encodeMethod) {
-  encodeMethod = encodeFallback;
-}
-
-function encode(s) {
-  return encodeMethod(s);
 }
 
 function decodeFallback(input) {
@@ -59,20 +50,9 @@ function decodeFallback(input) {
   return output;
 }
 
-// decoder
-// [https://gist.github.com/1020396] by [https://github.com/atk]
-var decodeMethod = undefined;
-if (typeof window != 'undefined') {
-  decodeMethod = window.atob;
-}
-
-if(!decodeMethod) {
-  decodeMethod = decodeFallback;
-}
-
 function decode(s) {
   try {
-    return decodeMethod(s);
+    return window.atob(s);
   } catch (err) {
     // When unicode isn't endoed correctly sometimes atob can fail, if this is the
     // case try decoding in JS as a failsafe measure
