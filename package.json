@@ -2,7 +2,7 @@
   "name": "virtru-base64",
   "repo": "virtru/virtru-base64",
   "description": "A base64 library that uses builtins where possible",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "dependencies": {},
   "license": "MIT",
   "scripts": {
