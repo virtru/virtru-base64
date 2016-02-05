@@ -6,9 +6,11 @@
   "dependencies": {},
   "license": "MIT",
   "scripts": {
-    "test": "mocha test.js"
+    "test": "./node_modules/.bin/mocha test.js",
+    "test-debug": "./node_modules/.bin/mocha debug test.js"
   },
   "devDependencies": {
-    "chai": "^3.4.1"
+    "chai": "^3.4.1",
+    "mocha": "^2.2.5"
   }
 }

@@ -52,7 +52,10 @@ function decodeFallback(input) {
 
 function decode(s) {
   try {
-    return window.atob(s);
+    if (typeof window != 'undefined') {
+      return window.atob(s);
+    }
+    return decodeFallback(s);
   } catch (err) {
     // When unicode isn't endoed correctly sometimes atob can fail, if this is the
     // case try decoding in JS as a failsafe measure
